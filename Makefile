@@ -1,5 +1,5 @@
 CPPFLAGS=-I/usr/local/cuda/include
-CFLAGS=-std=c99
+CFLAGS=-std=gnu99
 LDLIBS=-lOpenCL
 
 all: main

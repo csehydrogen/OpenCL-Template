@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "timer.h"
 
 static struct timespec t[8];

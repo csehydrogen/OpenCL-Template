@@ -32,11 +32,9 @@ cl_program create_and_build_program(cl_context context, cl_device_id device, con
     err = clBuildProgram(program, 1, &device, "", NULL, NULL);
     if (err == CL_BUILD_PROGRAM_FAILURE) {
         size_t log_size;
-        err = clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, 0, NULL, &log_size);
-        CHECK_ERROR(err);
+        CHECK_ERROR(clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, 0, NULL, &log_size));
         char *log = (char*)malloc(log_size + 1);
-        err = clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, log_size, log, NULL);
-        CHECK_ERROR(err);
+        CHECK_ERROR(clGetProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, log_size, log, NULL));
         log[log_size] = 0;
         printf("Compile error:\n%s\n", log);
         free(log);
